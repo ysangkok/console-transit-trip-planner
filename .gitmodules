@@ -1,3 +1,9 @@
 [submodule "public-transport-enabler-master"]
 	path = public-transport-enabler-master
 	url = git@github.com:schildbach/public-transport-enabler.git
+[submodule "yaya-irc-bot"]
+	path = yaya-irc-bot
+	url = git@github.com:ysangkok/yaya-irc-bot.git
+[submodule "pircbotx"]
+	path = pircbotx
+	url = git@github.com:TheLQ/pircbotx.git
