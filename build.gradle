@@ -1,0 +1,15 @@
+project(':cmdlet') {
+    apply plugin: 'groovy'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        compile 'org.codehaus.groovy:groovy:2.4.5'
+        compile project(':public-transport-enabler-master:enabler')
+    }
+    task runScript (dependsOn: 'classes', type: JavaExec) {
+        main = 'opnv'
+        classpath = sourceSets.main.runtimeClasspath
+        args project.getProperty('scriptArgs').split(',')
+    }
+}
