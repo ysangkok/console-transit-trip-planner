@@ -4,4 +4,4 @@ set -o nounset
 set -o pipefail
 set -e
 cd cmdlet
-gradle runScript '-PscriptArgs=Bahn,DA Taunusplatz,Vladivostok'
+gradle runScript "-PscriptArgs=$1,$2,$3"
