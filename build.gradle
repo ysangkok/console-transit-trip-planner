@@ -1,7 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath 'org.robovm:robovm-gradle-plugin:1.8.0'
+    }
+}
+project(':javacmdlet') {
+    apply plugin: 'robovm'
+    apply plugin: 'java'
+    repositories {
+        jcenter()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    ext {
+        mainClassName = "TripPlan"
+        roboVMVersion = "1.8.0"
+    }
+    robovm {
+        // Configure robovm
+        iosSignIdentity = ""
+        iosProvisioningProfile = ""
+        iosSkipSigning = true
+        stdoutFifo = ""
+        stderrFifo = ""
+    }
+    dependencies {
+        compile project(':public-transport-enabler-master:enabler')
+    }
+}
 project(':cmdlet') {
     apply plugin: 'groovy'
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         compile 'org.codehaus.groovy:groovy:2.4.5'
@@ -16,7 +48,7 @@ project(':cmdlet') {
 project(':yaya-irc-bot') {
     apply plugin: 'groovy'
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         compile 'org.codehaus.groovy:groovy:2.4.5'
