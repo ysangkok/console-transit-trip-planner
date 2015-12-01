@@ -1,5 +1,4 @@
 buildscript {
-    apply plugin:'java'
     repositories {
         mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }

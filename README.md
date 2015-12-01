@@ -1,3 +1,17 @@
+There are multiple applications:
+
+* An IRC bot
+* A Groovy script
+* A Java program
+
+To build the Java program with RoboVM, clone this repo and launch `make`.
+
+Now you can find directions using `./javacmdlet/build/robovm/TripPlan <provider> <departure-location> <destination-location>`. Because we use RoboVM, you do not need to wait for the JVM to launch, or have a daemon running.
+
+All feedback is very welcome!
+
+This is a sample of the output of the Groovy script. The Java output should be identical.
+
     $ ./go.sh Bahn "DA Taunusplatz" "Vladivostok"
     BUS H -> Anne-Frank-Straße
     Sun 00:08	Taunusplatz
