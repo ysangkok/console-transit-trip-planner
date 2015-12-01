@@ -1,0 +1,10 @@
+<config>
+ <forceLinkClasses>
+  <pattern>com.android.okhttp.HttpHandler</pattern>
+  <pattern>com.android.okhttp.HttpsHandler</pattern>
+  <pattern>com.android.org.conscrypt.**</pattern>
+  <pattern>com.android.org.bouncycastle.jce.provider.BouncyCastleProvider</pattern>
+  <pattern>org.apache.harmony.security.provider.cert.DRLCertFactory</pattern>
+  <pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
+ </forceLinkClasses>
+</config>
