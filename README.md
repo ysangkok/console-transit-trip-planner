@@ -30,3 +30,15 @@ This is a sample of the output of the Groovy script. The Java output should be i
     REGIONAL_TRAIN D2MJ -> Vladivostok
     Mon 20:17	Nishnij Novgorod Moskovsk
     Sun 13:10	Vladivostok
+
+See also
+========
+
+* https://github.com/derf/Travel-Routing-DE-VRR
+
+This Perl script works well if you need directions in an area that is covered by a system that uses EFA. As of 2015, its default provider doesn't know every stop in other cities:
+
+```
+$ efa Darmstadt Taunusplatz Frankfurt/Main Hauptbahnhof 
+Backend error: The name 'Taunusplatz' is ambiguous. Try one of Hauptbahnhof | Arheilgen | Eberstadt | Kranichstein | Nordbahnhof | Ostbahnhof | Südbahnhof | Wixhausen | TU-Lichtwiese
+```
