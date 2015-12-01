@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -o nounset
+set -o pipefail
+set -e
 echo "public class T {"
 echo "public static de.schildbach.pte.AbstractNetworkProvider t(String name) {"
 echo "switch (name) {"
