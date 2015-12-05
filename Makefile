@@ -1,7 +1,7 @@
 javacmdlet/build/robovm/TripPlan: javacmdlet/build/classes/main/T.class javacmdlet/build/classes/main/TripPlan.class
 	gradle robovmInstall -PscriptArgs=bogus
 
-javacmdlet/build/classes/main/TripPlan.class: javacmdlet/src/main/java/TripPlan.java
+javacmdlet/build/classes/main/TripPlan.class: javacmdlet/src/main/java/TripPlan.java build.gradle
 	gradle javacmdlet:clean javacmdlet:build -PscriptArgs=bogus
 
 javacmdlet/build/classes/main/T.class: javacmdlet/src/main/java/T.java
