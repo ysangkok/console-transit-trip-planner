@@ -6,13 +6,13 @@ There are multiple applications:
 
 To build the Java program with RoboVM, clone this repo and launch `make`.
 
-Now you can find directions using `./javacmdlet/build/robovm/TripPlan <provider> <departure-location> <destination-location>`. Because we use RoboVM, you do not need to wait for the JVM to launch, or have a daemon running.
+Now you can find directions using e.g. `./javacmdlet/build/robovm/TripPlan "--time=5 hours from now" --provider=<provider> <departure-location> <destination-location>`. Because we use RoboVM, you do not need to wait for the JVM to launch, or have a daemon running.
 
 All feedback is very welcome!
 
 This is a sample of the output of the Groovy script. The Java output should be identical.
 
-    $ ./go.sh Bahn "DA Taunusplatz" "Vladivostok"
+    $ ./go.sh --provider=Bahn "DA Taunusplatz" "Vladivostok"
     BUS H -> Anne-Frank-Straße
     Sun 00:08	Taunusplatz
     Sun 00:21	Darmstadt Hauptbahnhof

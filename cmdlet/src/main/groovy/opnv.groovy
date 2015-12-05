@@ -7,9 +7,19 @@ import de.schildbach.pte.dto.Product;
 
 import de.schildbach.pte.*;
 
+import org.ocpsoft.prettytime.nlp.PrettyTimeParser;
+
+void usage() {
+  println "Incorrect parameters"
+  System.exit 1
+}
+
 Set<Product> products = Product.ALL;
 int currentArgument = 0;
-String[] otherArgs = new String[3];
+AbstractNetworkProvider provider = new BahnProvider();
+Date time = new Date();
+String to = null;
+String from = null;
 
 for (String i : args) {
   if (i.equals("--nahverkehr")) {
@@ -18,22 +28,34 @@ for (String i : args) {
     Set<Product> newSet = new HashSet<Product>(products);
     newSet.remove(Product.fromCode(i.charAt(i.length() - 1)));
     products = newSet;
+  } else if (i.startsWith("--provider=")) {
+    provider = Class.forName("de.schildbach.pte." + i.substring("--provider=".length()) + "Provider").newInstance()
+  } else if (i.startsWith("--time=")) {
+    time = new PrettyTimeParser().parse(i.substring("--time=".length())).get(0);
+  } else if (i.startsWith("--")) {
+    err.println("Invalid flag.");
+    usage();
+  } else if (currentArgument == 0) {
+    from = i;
+    currentArgument++;
+  } else if (currentArgument == 1) {
+    to = i;
+    currentArgument++;
   } else {
-    otherArgs[currentArgument++] = i;
+    err.println("Too many arguments.");
+    usage();
   }
 }
 
-if (otherArgs[2] == null) {
-  println("Missing an argument!\nSyntax: TripPlan <provider> <from> <to>");
-  exit(1);
+if (to == null || from == null) {
+  err.println("Missing an argument.");
+  usage();
 }
 
-provider = Class.forName("de.schildbach.pte." + otherArgs[0] + "Provider").newInstance()
+sug1 = provider.suggestLocations(from);
+sug2 = provider.suggestLocations(to);
 
-sug1 = provider.suggestLocations(otherArgs[1])
-sug2 = provider.suggestLocations(otherArgs[2])
-
-result = provider.queryTrips(sug1.suggestedLocations[0].location, null, sug2.suggestedLocations[0].location, new Date(), /*dep*/ true, products, null, WalkSpeed.NORMAL, Accessibility.NEUTRAL, null)
+result = provider.queryTrips(sug1.suggestedLocations[0].location, null, sug2.suggestedLocations[0].location, time, /*dep*/ true, products, null, WalkSpeed.NORMAL, Accessibility.NEUTRAL, null)
 
 //println sprintf("From: %1$s, To: %2$s", result.from, result.to)
 
