@@ -4,4 +4,4 @@ set -o nounset
 set -o pipefail
 set -e
 cd cmdlet
-gradle runScript "-PscriptArgs=$1,$2,$3"
+gradle runScript "-PscriptArgs=$(IFS=,; echo "$*")"

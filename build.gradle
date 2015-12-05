@@ -28,6 +28,7 @@ project(':javacmdlet') {
     }
     dependencies {
         compile project(':public-transport-enabler-master:enabler')
+        compile 'org.slf4j:slf4j-simple:1.7.12'
     }
 }
 project(':cmdlet') {
@@ -38,6 +39,7 @@ project(':cmdlet') {
     dependencies {
         compile 'org.codehaus.groovy:groovy:2.4.5'
         compile project(':public-transport-enabler-master:enabler')
+        compile 'org.slf4j:slf4j-simple:1.7.12'
     }
     task runScript (dependsOn: 'classes', type: JavaExec) {
         main = 'opnv'
