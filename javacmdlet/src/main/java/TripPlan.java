@@ -68,7 +68,22 @@ if (to == null || from == null) {
 SuggestLocationsResult sug1 = provider.suggestLocations(from);
 SuggestLocationsResult sug2 = provider.suggestLocations(to);
 
-QueryTripsResult result = provider.queryTrips(sug1.getLocations().get(0), null, sug2.getLocations().get(0), time, /*dep*/ true, products, null, WalkSpeed.NORMAL, Accessibility.NEUTRAL, null);
+Location loc1 = null, loc2 = null;
+
+try {
+	loc1 = sug1.getLocations().get(0);
+	loc2 = sug2.getLocations().get(0);
+} catch (IndexOutOfBoundsException e) {
+	err.println("Couldn't suggest locations: Invalid source or destination for this provider.");
+	System.exit(1);
+}
+
+QueryTripsResult result = provider.queryTrips(loc1, null, loc2, time, /*dep*/ true, products, null, WalkSpeed.NORMAL, Accessibility.NEUTRAL, null);
+
+if (result.trips == null) {
+	err.println("No trips available: An invalid source or destination location for this provider was selected, or the departure time is too far from now.");
+	System.exit(1);
+}
 
 //println sprintf("From: %1$s, To: %2$s", result.from, result.to)
 

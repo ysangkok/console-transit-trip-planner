@@ -6,5 +6,6 @@
   <pattern>com.android.org.bouncycastle.jce.provider.BouncyCastleProvider</pattern>
   <pattern>org.apache.harmony.security.provider.cert.DRLCertFactory</pattern>
   <pattern>org.apache.harmony.security.provider.crypto.CryptoProvider</pattern>
+  <pattern>java.util.logging.ConsoleHandler</pattern>
  </forceLinkClasses>
 </config>
